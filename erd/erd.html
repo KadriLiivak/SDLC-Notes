@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        td, th
+        {
+            border:1px solid black;
+            padding: 1rem;
+        }
+        th{
+            color: #fff;
+            background-color: darkblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Cars Database</h2>
+
+
+    <button id="myBtn">Open ERD</button>
+
+
+    <div id="myModal" class="modal">
+
+
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Cars ERD</h3>
+            <img src="../img/CarsERD.jpg" alt="ERD">
+            
+            <h3>ERD Description</h3>
+            <h4>Table CarMark</h4>
+            <ul>
+            <li>Tabel CarMark näitab autode Id ja automarki ning on seoses tabeliga CarinGarage</li>
+            <li>Tabeli atribuudid on: PK (Id)
+               </li>
+            <li> 
+                PK ehk Primary Key (eesti k. primaarvõti, esmasvõti):on võti, mis üheselt identifitseerib ühe kirje, mis on valitud relatsiooni kirjeid unikaalselt identifitseerima. See tähendab, et iga rea esmane võti tuvastab selle rea kordumatult.
+                PK ehk Primary Key (ID) abil on "Table CarMark" tabel seoses tabeliga "Table CarInGarage".
+                </li>
+            </ul>
+
+            <h4>Table CarInGarage</h4>
+            <ul>
+            <li>Tabel CarInGarage näitab automudelite nimetusi, automudelite unikaalset koodi (Id) ning iga automudeli seost kindla automargiga. Seost tabeliga CarMark näitab CarMarkId </li>
+            <li>Tabeli atribuudid on PK (Id), FK (CarMarkId)</li>
+            <li>1. PK ehk Primary Key (eesti k. primaarvõti, esmasvõti):on võti, mis üheselt identifitseerib ühe kirje, mis on valitud relatsiooni kirjeid unikaalselt identifitseerima. See tähendab, et iga rea esmane võti tuvastab selle rea kordumatult. 
+                2. FK ehk Foreign Key (eesti k. võõrvõti): pakub seost kahe tabeli andmete vahel. See toimib ristviidetena tabelite vahel, kuna see viitab teise tabeli primaarvõtmele, luues seose kahe tabeli vahel.</li>
+            </ul>
+            
+        </div>
+
+    </div>
+
+    <h4>CarMark</h4>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>CarMarkName</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Tesla</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>BMW</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Toyota</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Skoda</td>
+        </tr>
+        
+    </table>
+
+    <h4>CarInGarage</h4>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>CarMarkId</th>
+            <th>CarModelName</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>X1</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>3</td>
+            <td>Yaris</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>3</td>
+            <td>Aygo</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>1</td>
+            <td>Cybertruck</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>4</td>
+            <td>Octavia</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>4</td>
+            <td>Fabia</td>
+        </tr>
+
+    </table>
+
+    <footer style="text-align: center; margin-top: 5rem;">
+        Copyright 2021 &#169 K.L.
+    </footer>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
